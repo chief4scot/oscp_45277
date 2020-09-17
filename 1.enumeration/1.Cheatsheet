@@ -1,5 +1,7 @@
+# Commands
+
 https://scund00r.com/all/oscp/2018/02/25/passing-oscp.html#enumeration
-## Nmap Scanning
+### Nmap Scanning
   - Quick TCP Scan
   nmap -sC -sV -vv -oA quick 10.10.10.10
   
@@ -12,7 +14,7 @@ https://scund00r.com/all/oscp/2018/02/25/passing-oscp.html#enumeration
   - Port knock
   for x in 7000 8000 9000; do nmap -Pn --host_timeout 201 --max-retries 0 -p $x 10.10.10.10; done
   
-## Web Scanning
+### Web Scanning
   - Gobuster quick directory busting
   gobuster -u 10.10.10.10 -w /usr/share/seclists/Discovery/Web_Content/common.txt -t 80 -a Linux
   
@@ -28,14 +30,14 @@ https://scund00r.com/all/oscp/2018/02/25/passing-oscp.html#enumeration
   - Wordpress scan
   wpscan -u 10.10.10.10/wp/
   
-## Port Checking
+### Port Checking
   - Netcat banner grab
   nc -v 10.10.10.10 port
   
   - Telnet banner grab
   telnet 10.10.10.10 port
   
-## SMB
+### SMB
   - SMB Vulnerability Scan
   nmap -p 445 -vv --script=smb-vuln-cve2009-3103.nse,smb-vuln-ms06-025.nse,smb-vuln-ms07-029.nse,smb-vuln-ms08-067.nse,smb-vuln-ms10-054.nse,smb-vuln-ms10-061.nse,smb-vuln-ms17-010.nse 10.10.10.10
   
@@ -51,14 +53,14 @@ https://scund00r.com/all/oscp/2018/02/25/passing-oscp.html#enumeration
   - Connect to SMB share
   smbclient //MOUNT/share
   
-## SNMP
+### SNMP
   - SNMP enumeration
   snmp-check 10.10.10.10
   
-## Web Server
+### Web Server
   python -m SimpleHTTPServer 80
 
-## FTP Server
+### FTP Server
   - Install pyftpdlib
   pip install pyftpdlib
   
