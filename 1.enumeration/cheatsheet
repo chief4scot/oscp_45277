@@ -9,7 +9,7 @@ https://scund00r.com/all/oscp/2018/02/25/passing-oscp.html#enumeration
   nmap -sU -sV -vv -oA quick_udp 10.10.10.10
   
   - Full TCP Scan
-  nmap -sC -sV -p- -vv -oA full 10.10.10.10
+  ports=$(nmap -p- --min-rate=1000 -T4 10.10.10.27 | grep ^[0-9] | cut -d '/' -f 1 | tr '\n' ',' | sed s/,$//); nmap -sC -sV -p$ports -vv -oA full 10.10.10.27
   
   - Port knock
   for x in 7000 8000 9000; do nmap -Pn --host_timeout 201 --max-retries 0 -p $x 10.10.10.10; done
@@ -50,8 +50,11 @@ https://scund00r.com/all/oscp/2018/02/25/passing-oscp.html#enumeration
   - Null connect
   rpcclient -U "" 10.10.10.10
   
-  - Connect to SMB share
-  smbclient //MOUNT/share
+  - List SMB shares
+  smbclient -N -L //10.10.10.27
+
+  - Connect to SMB share (-N flag skips password)
+  smbclient -N //10.10.10.27/backups
   
 # SNMP
   - SNMP enumeration
