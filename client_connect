@@ -1,4 +1,7 @@
 # Connection clients
 
   ### SLQ: impacket client
-   mssqlclient.py ARCHETYPE/sql_svc@10.10.10.27 -windows-auth
+mssqlclient.py ARCHETYPE/sql_svc@10.10.10.27 -windows-auth
+
+  ### PSExec
+psexec.py administrator@10.10.10.27
