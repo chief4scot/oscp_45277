@@ -1,0 +1,21 @@
+# Report structure
+
+OSCP/
+├── Offensive Security Lab Penetration Test Report
+│   ├── Introduction
+│   ├── Objective
+│   └── Scope
+├── High-Level Summary
+│   └── Recommendations
+├── Methodologies
+│   ├── Information Gathering
+│   ├── Service Enumeration
+│   ├── Penetration
+│   ├── Maintaining Access
+│   └── House Cleaning
+└── Findings
+    ├── Box1 - 10.10.10.10
+    ├── Box2 - 10.10.10.11
+    ├── Box3 - 10.10.10.12
+    ├── Box4 - 10.10.10.13
+    └── Box5 - 10.10.10.14
