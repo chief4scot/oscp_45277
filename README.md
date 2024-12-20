@@ -1,4 +1,4 @@
-# oscp_45277
+# oscp
 Resources, guides &amp; code to reference in the OSCP exam. 
 
 Sections:
