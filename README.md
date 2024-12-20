@@ -1,4 +1,4 @@
-# oscp
+# Notes and Resources for the OSCP Exam (2021)
 Resources, guides &amp; code to reference in the OSCP exam. 
 
 Sections:
